@@ -1,0 +1,61 @@
+package test2;
+
+import java.util.Scanner;
+
+public class Palindrom1 {
+
+	static void Main(String[] args)
+    {
+		
+		 
+
+		   /******************************************************************************
+		                             Declarations Section                               
+		   ******************************************************************************/
+		    /****************************CONSTANTS********************************/
+
+		     // Defined variables, must be integers to get a remainder
+		      int reverse=0;
+		      int palindrome;
+		      int remainder;
+		      int num=0;
+
+		      @SuppressWarnings("resource")
+			Scanner scan = new Scanner (System.in); //Scanner utility initialization
+
+		   /******************************************************************************
+		                                 Inputs Section                                  
+		    ******************************************************************************/
+
+		      System.out.print("Please input a three digit number: ");
+		      palindrome = scan.nextInt(); // The following lines prompt the user to input a three digit number  
+
+		   /****************************variables********************************/ 
+		    // Variables are not in this section // 
+
+		      /******************************************************************************
+		                                 Processing Section                              
+		      ******************************************************************************/
+
+		      while (palindrome > 0)
+		      {
+		         remainder = palindrome % 10; //Uses the remainder function to find the remainder of the number using 10
+		         reverse = reverse * 10 + remainder; // Calculates the reverse by multiplying the initial reverse value of 0 by 10 and dividing by ten to get the number of reverse
+		         num = palindrome / 10; // Divides the palindrome by ten to get the number minus the remainder
+		      }
+
+		      if (num == reverse) // If the num (copied from palindrome) is equal to the reverse the number is a palindrome
+		      {
+		         System.out.println(palindrome + "  is a palindrome.");
+		      }
+		      else 
+		      {
+		         System.out.println(palindrome + "  is not a palindrome.");   // If and else statements determine if palindrome = reverse statement is true or false and print accordingly.
+		      } // Closes while and if statement
+		   /******************************************************************************
+		                                 Outputs Section                                
+		   ******************************************************************************/
+		        //Outputs are in processing//
+
+		   } // Ends string
+		} // Ends program

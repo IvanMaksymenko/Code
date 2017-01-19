@@ -1,0 +1,102 @@
+/**
+ *
+ * @author D H A R M i L
+ * find largest 3 digit PALINDROME Number
+ * 
+ **/
+public class PALINDROME {
+ 
+    public static void main(String[] args) throws Exception
+    {
+        int a=100,b=100,res;
+        int i=1;
+        int resarray[] = new int[6];
+         
+         
+        System.out.println ("Largest Palindrome 3 DiGiT no. :");
+             
+        while (a<=999)
+                {
+                    while (b<=999)
+                    {
+                        int rem0,rem1,rem2,rem3,rem4,rem5;
+                        int res0,res1,res2,res3,res4,res5;
+                         
+                        res=a*b;
+                        int length = String.valueOf(res).length();
+                        if (length == 6)
+                        {
+                         
+                        rem0=res%100000;
+                        rem1=rem0%10000;
+                        rem2=rem1%1000;
+                        rem3=rem2%100;
+                        rem4=rem3%10;
+                        rem5=rem4%1;
+                         
+                        res0=res/100000;
+                        res1=rem0/10000;
+                        res2=rem1/1000;
+                        res3=rem2/100;
+                        res4=rem3/10;
+                        res5=rem4/1;
+                         
+                        resarray[0]=res0;
+                        resarray[1]=res1;
+                        resarray[2]=res2;
+                        resarray[3]=res3;
+                        resarray[4]=res4;
+                        resarray[5]=res5;
+                         
+                        if (res0 == res5)
+                        {
+                            if (res1 == res4)
+                            {
+                                if (res2 == res3)
+                                {
+                                    System.out.println ("Palindrome of \n"+a+"x"+b+" :- "+res);
+                                }
+                            }
+                        }
+                        }
+                        if (length == 5)
+                        {
+                             
+                        rem1=res%10000;
+                        rem2=rem1%1000;
+                        rem3=rem2%100;
+                        rem4=rem3%10;
+                        rem5=rem4%1;
+                         
+                        res1=res/10000;
+                        res2=rem1/1000;
+                        res3=rem2/100;
+                        res4=rem3/10;
+                        res5=rem4/1;
+                         
+                        //resarray[0]=res0;
+                        resarray[1]=res1;
+                        resarray[2]=res2;
+                        resarray[3]=res3;
+                        resarray[4]=res4;
+                        resarray[5]=res5;
+                         
+                        if (res1 == res5)
+                        {
+                            if (res2 == res4)
+                            {
+                                    System.out.println ("Palindrome of \n"+a+"x"+b+" :- "+res);
+                            }
+                        }   
+                        }
+                         
+                       b++;
+                       //System.out.println("B is:- "+b);
+                    }
+                    b=100;
+                    a++;
+                    //System.out.println("A is:- "+a);
+                }
+            
+    }
+}

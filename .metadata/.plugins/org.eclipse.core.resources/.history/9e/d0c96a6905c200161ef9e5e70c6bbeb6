@@ -1,0 +1,76 @@
+package test2;
+
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
+
+
+public class Palindrome {
+    Comparator<Node> comparator = new NodeComparator();
+    PriorityQueue<Node> queue = new PriorityQueue<>(comparator);
+    Palindrome(){
+ 
+    }
+    public boolean checkPalindrome(long a){
+        String palindrome = Long.toString(a);
+        StringBuilder reverse = new StringBuilder(palindrome).reverse();
+        String reversepal = String.valueOf(reverse);
+        if(palindrome.equals(reversepal))
+            return true;
+        else
+            return false;
+    }
+    public void findMax(int n){
+        int dec = 10;
+        long number = 1;
+        for(int j = 0; j < n; j++){
+            number *=dec;
+        }
+        number--; //понижение переменной до максимально вожможного n-значного числа
+        queue.add(new Node(true,number,number,number*number));
+        while(!checkPalindrome(queue.peek().productOfMul)){
+            Node temp = queue.poll();
+            temp.secondMul = temp.secondMul-1;
+            temp.productOfMul = temp.firstMul * temp.secondMul;
+            if(temp.enterFirst){
+                if((temp.firstMul-temp.secondMul == 2)){
+                    temp.enterFirst = false;
+                    queue.add(new Node(true,temp.firstMul-1,temp.firstMul-1,(temp.firstMul-1)*(temp.firstMul-1)));
+                }
+            }
+            queue.add(temp);
+        }
+        System.out.println(queue.peek().productOfMul);
+        System.out.println(queue.peek().firstMul + " " + queue.peek().secondMul);
+    }
+    public static void main(String[] args) {
+ 
+        Palindrome pl = new Palindrome();
+        pl.findMax(9);
+    }
+    static class NodeComparator implements Comparator<Node>{
+ 
+        @Override
+        public int compare(Node o1, Node o2) {
+            if(o1.productOfMul < o2.productOfMul){
+                return 1;
+            }
+            if(o1.productOfMul > o2.productOfMul){
+                return -1;
+            }
+            return 0;
+        }
+    }
+}
+class Node{
+    boolean enterFirst = true;
+    long firstMul;
+    long secondMul;
+    long productOfMul;
+    public Node(boolean e,long f,long s, long p){
+        enterFirst = e;
+        firstMul = f;
+        secondMul = s;
+        productOfMul = p;
+    }
+}

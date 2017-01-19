@@ -1,0 +1,36 @@
+package test2;
+
+import java.util.Scanner;
+
+
+public class PALINDROME {
+ 
+
+int findMax(int n) {
+        
+        int number = (int) Math.pow(10, n) - 1;
+        int length = String.valueOf(number).length();
+        int max = 0;
+        
+        for (int j = number; j > 0; j--) {
+            long res = number * j;
+            int l = String.valueOf(res).length();
+            String strnumber = String.valueOf(res);
+            int k = 0, count = 0;
+            for (; k < l / 2; k++) 
+                if (strnumber.charAt(k) == strnumber.charAt(l - k - 1)) count++;
+            
+            if (count == k) {
+                max = Integer.parseInt(strnumber);
+                break;
+            } 
+        }
+        return max;
+        
+    }
+    
+    public static void main(String[] args) {
+    	PALINDROME p = new PALINDROME();
+        System.out.println(p.findMax(3));
+    }
+	    }
